@@ -1,0 +1,8 @@
+{
+  "name": "dantri-news-mcp-python-runner",
+  "version": "1.0.0",
+  "bin": {
+    "dantri-news-mcp-python": "./run.js"
+  },
+  "type": "module"
+}
