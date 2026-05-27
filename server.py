@@ -1,8 +1,7 @@
 from mcp.server.fastmcp import FastMCP
 import feedparser
-import requests
-from bs4 import BeautifulSoup
 import trafilatura
+from bs4 import BeautifulSoup
 
 mcp = FastMCP("dantri-news")
 
@@ -30,10 +29,10 @@ def latest_news(category: str = "home", limit: int = 5):
 
     feed = feedparser.parse(feed_url)
 
-    results = []
+    articles = []
 
     for item in feed.entries[:limit]:
-        results.append({
+        articles.append({
             "title": item.get("title", ""),
             "link": item.get("link", ""),
             "published": item.get("published", ""),
@@ -45,8 +44,7 @@ def latest_news(category: str = "home", limit: int = 5):
 
     return {
         "category": category,
-        "count": len(results),
-        "articles": results
+        "articles": articles
     }
 
 
@@ -61,27 +59,26 @@ def summarize_article(url: str):
             "error": "Cannot fetch article"
         }
 
-    content = trafilatura.extract(downloaded)
+    text = trafilatura.extract(downloaded)
 
-    if not content:
+    if not text:
         return {
-            "error": "Cannot extract content"
+            "error": "Cannot extract article"
         }
 
     summary = ".".join(
-        content.split(".")[:5]
+        text.split(".")[:5]
     ).strip() + "."
 
     return {
         "url": url,
-        "summary": summary,
-        "content_length": len(content)
+        "summary": summary
     }
 
 
 @mcp.tool()
 def categories():
-    """Get available news categories"""
+    """Get available categories"""
 
     return list(RSS_FEEDS.keys())
 

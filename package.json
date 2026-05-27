@@ -1,8 +1,12 @@
 {
-  "name": "dantri-news-mcp-python-runner",
-  "version": "1.0.0",
+  "name": "dantri-news-mcp-python",
+  "version": "1.0.1",
+  "description": "Dantri News MCP Server",
+  "type": "module",
   "bin": {
     "dantri-news-mcp-python": "./run.js"
   },
-  "type": "module"
+  "scripts": {
+    "start": "node run.js"
+  }
 }
