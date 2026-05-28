@@ -3,7 +3,7 @@
 ## Run from GitHub
 
 ```bash
-npx -y github:YOUR_GITHUB_USERNAME/dantri-news-mcp-python
+npx -y github:tuyennn/dantri-news-mcp
 ```
 
 ## MCPHub Config
@@ -15,7 +15,7 @@ npx -y github:YOUR_GITHUB_USERNAME/dantri-news-mcp-python
       "command": "npx",
       "args": [
         "-y",
-        "github:YOUR_GITHUB_USERNAME/dantri-news-mcp-python"
+        "github:tuyennn/dantri-news-mcp"
       ]
     }
   }
